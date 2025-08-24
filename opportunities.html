@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Opportunities - TeriWan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #040116;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .accordion {
+      background: #1a1a2e;
+      color: #fff;
+      cursor: pointer;
+      padding: 14px;
+      margin: 8px 0;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+
+    .accordion:hover {
+      background: #2a2a4e;
+    }
+
+    .panel {
+      display: none;
+      background: #0d0d1f;
+      margin-top: -8px;
+      margin-bottom: 8px;
+      padding: 12px;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 2px 6px rgba(242, 3, 242, 0.816);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .panel p {
+      color: #fff;
+      margin: 0 0 8px 0;
+    }
+
+    .panel a {
+      color: #66ccff;
+      text-decoration: underline;
+    }
+
+    /* Sub-accordion inside PhD Offers */
+    .sub-accordion {
+      background: #ddddff;
+      font-size: 15px;
+      margin: 6px 0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .sub-panel {
+      display: none;
+      background: #1a1a2e;
+      margin: -6px 0 8px 0;
+      padding: 10px;
+      border-radius: 0 0 6px 6px;
+    }
+
+    .sub-panel p {
+      font-size: 14px;
+      color: #fff;
+      margin: 0 0 6px 0;
+    }
+
+    .sub-panel a {
+      color: #66ccff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Opportunities</h1>
+
+    <button class="accordion">Collaboration Requests</button>
+    <div class="panel">
+      <p>We are seeking collaborators in coastal modeling, AI for oceanography, and environmental sensing projects. Reach out if you have complementary expertise!</p>
+    </div>
+
+    <button class="accordion">Scholarships</button>
+    <div class="panel">
+      <p>Current scholarship opportunities will be posted here as they become available. Check back frequently for updates.</p>
+    </div>
+
+    <button class="accordion">PhD Offers</button>
+    <div class="panel">
+      <!-- Carley Lab Post -->
+      <button class="sub-accordion">Carley Lab (UChicago)</button>
+      <div class="sub-panel">
+        <p>All 2025 lab positions have been filled, but new PhD opportunities may open for Fall 2026. Motivated undergraduates, graduates, and postdoctoral researchers interested in joining are welcome to reach out.</p>
+        <p>For detailed lab culture and instructions, visit: 
+          <a href="https://carleylab.uchicago.edu/join/" target="_blank">Carley Lab - Join Us</a>.
+        </p>
+      </div>
+
+      <!-- USC LiLab Post -->
+      <button class="sub-accordion">USC LiLab</button>
+      <div class="sub-panel">
+        <p>The Li Lab at USC is actively recruiting for PhD and research positions. Roles may include research assistants, internships, and graduate student opportunities.</p>
+        <p>For application instructions, visit: 
+          <a href="https://lilab.usc.edu/employment/" target="_blank">Li Lab Employment Page</a>.
+        </p>
+      </div>
+
+      <!-- Example: Add more posts easily by copying the structure below -->
+      <!--
+      <button class="sub-accordion">Another Lab Name</button>
+      <div class="sub-panel">
+        <p>Opportunity description goes here...</p>
+        <p><a href="link-to-opportunity" target="_blank">Apply Here</a></p>
+      </div>
+      -->
+    </div>
+
+    <button class="accordion">Jobs / Internships</button>
+    <div class="panel">
+      <p>Open positions for research assistants, internships, and short-term projects will be listed here. Check back for new postings regularly!</p>
+    </div>
+  </div>
+
+  <script>
+    // Main accordion
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(btn => {
+      btn.addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+
+    // Sub-accordion inside PhD Offers
+    const subAcc = document.querySelectorAll(".sub-accordion");
+    subAcc.forEach(btn => {
+      btn.addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
+</body>
+</html>
+
