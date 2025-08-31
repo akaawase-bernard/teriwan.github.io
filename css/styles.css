@@ -363,3 +363,34 @@ html,body{
     
 }
 
+/* Make all project title links white */
+.project1Title a,
+.project2Title a,
+.project3Title a,
+.project4Title a,
+.project5Title a,
+.project6Title a {
+  color: white;
+  text-decoration: none; /* removes underline */
+}
+
+/* Keep them white even after being visited */
+.project1Title a:visited,
+.project2Title a:visited,
+.project3Title a:visited,
+.project4Title a:visited,
+.project5Title a:visited,
+.project6Title a:visited {
+  color: white;
+}
+
+/* Optional hover effect */
+.project1Title a:hover,
+.project2Title a:hover,
+.project3Title a:hover,
+.project4Title a:hover,
+.project5Title a:hover,
+.project6Title a:hover {
+  color: #ddd; /* slightly lighter white */
+  text-decoration: underline;
+}
