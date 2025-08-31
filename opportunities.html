@@ -1,170 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Opportunities - TeriWan</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    body {
-      font-family: 'Raleway', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #040116;
-      color: #fff;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
-    }
-
-    .accordion {
-      background: #1a1a2e;
-      color: #fff;
-      cursor: pointer;
-      padding: 14px;
-      margin: 8px 0;
-      border-radius: 8px;
-      text-align: left;
-      font-size: 16px;
-      border: none;
-      outline: none;
-      transition: background 0.3s ease;
-    }
-
-    .accordion:hover {
-      background: #2a2a4e;
-    }
-
-    .panel {
-      display: none;
-      background: #0d0d1f;
-      margin-top: -8px;
-      margin-bottom: 8px;
-      padding: 12px;
-      border-radius: 0 0 8px 8px;
-      box-shadow: 0 2px 6px rgba(242, 3, 242, 0.816);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .panel p {
-      color: #fff;
-      margin: 0 0 8px 0;
-    }
-
-    .panel a {
-      color: #66ccff;
-      text-decoration: underline;
-    }
-
-    /* Sub-accordion inside PhD Offers */
-    .sub-accordion {
-      background: #ddddff;
-      font-size: 15px;
-      margin: 6px 0;
-      padding: 10px;
-      border-radius: 6px;
-    }
-
-    .sub-panel {
-      display: none;
-      background: #1a1a2e;
-      margin: -6px 0 8px 0;
-      padding: 10px;
-      border-radius: 0 0 6px 6px;
-    }
-
-    .sub-panel p {
-      font-size: 14px;
-      color: #fff;
-      margin: 0 0 6px 0;
-    }
-
-    .sub-panel a {
-      color: #66ccff;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>TeriWan Opportunities</title>
+<link rel="icon" href="data:," />
+<style>
+  :root{--bg:#040116;--card:#14142b;--muted:#bfc6d6;--accent:#66ccff;--nav:#0e0e1b;}
+  body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;margin:0;color:#fff;background:var(--bg);-webkit-font-smoothing:antialiased;}
+  header{background:var(--nav);padding:14px 18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  header .brand{font-weight:700;font-size:18px;color:var(--accent)}
+  nav{display:flex;gap:6px;flex-wrap:wrap}
+  nav a{color:#dce6ff;text-decoration:none;padding:8px 12px;border-radius:8px;font-size:14px}
+  nav a.active{background:#0b6d9e;color:#fff}
+  .container{max-width:980px;margin:28px auto;padding:0 12px}
+  #controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+  #search{flex:1;min-width:200px;padding:10px;border-radius:8px;border:none;background:#0b0b13;color:#fff}
+  .select{padding:10px;border-radius:8px;border:none;background:#0b0b13;color:#fff}
+  .list{display:grid;grid-template-columns:1fr;gap:12px}
+  .card{background:linear-gradient(180deg,var(--card),#0f0f20);padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.4)}
+  .card h3{margin:0 0 6px;font-size:18px}
+  .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+  .desc{font-size:14px;color:#e8eefc;margin-bottom:8px;line-height:1.4}
+  .link{color:var(--accent);text-decoration:underline}
+  .tags{font-size:12px;color:var(--muted)}
+  .share a{color:var(--accent);text-decoration:underline;margin-right:6px;font-size:13px}
+  .share a:hover{text-decoration:none}
+  #loadMore{display:block;margin:18px auto;padding:10px 18px;border-radius:8px;border:none;background:#0b6d9e;color:#fff;cursor:pointer}
+  footer{margin-top:28px;padding:18px;border-radius:10px;background:#0b0b13}
+  .subscribe-row{display:flex;gap:8px;flex-wrap:wrap}
+  .email-input{flex:1;padding:10px;border-radius:8px;border:none;background:#0b0b13;color:#fff}
+  .btn{padding:10px 14px;border-radius:8px;border:none;background:#0b6d9e;color:#fff;cursor:pointer}
+  .small{font-size:13px;color:var(--muted)}
+  @media(min-width:800px){.list{grid-template-columns:1fr 1fr}}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Opportunities</h1>
 
-    <button class="accordion">Collaboration Requests</button>
-    <div class="panel">
-      <p>We are seeking collaborators in coastal modeling, AI for oceanography, and environmental sensing projects. Reach out if you have complementary expertise!</p>
-    </div>
+<header>
+  <div class="brand">TeriWan Opportunities</div>
+  <nav id="tabs">
+    <a href="#phd" data-tab="phd">PhD Offers</a>
+    <a href="#scholarships" data-tab="scholarships">Scholarships</a>
+    <a href="#internships" data-tab="internships">Internships</a>
+    <a href="#collaboration" data-tab="collaboration">Collaboration</a>
+  </nav>
+</header>
 
-    <button class="accordion">Scholarships</button>
-    <div class="panel">
-      <p>Current scholarship opportunities will be posted here as they become available. Check back frequently for updates.</p>
-    </div>
-
-    <button class="accordion">PhD Offers</button>
-    <div class="panel">
-      <!-- Carley Lab Post -->
-      <button class="sub-accordion">Carley Lab (UChicago)</button>
-      <div class="sub-panel">
-        <p>All 2025 lab positions have been filled, but new PhD opportunities may open for Fall 2026. Motivated undergraduates, graduates, and postdoctoral researchers interested in joining are welcome to reach out.</p>
-        <p>For detailed lab culture and instructions, visit: 
-          <a href="https://carleylab.uchicago.edu/join/" target="_blank">Carley Lab - Join Us</a>.
-        </p>
-      </div>
-
-      <!-- USC LiLab Post -->
-      <button class="sub-accordion">USC LiLab</button>
-      <div class="sub-panel">
-        <p>The Li Lab at USC is actively recruiting for PhD and research positions. Roles may include research assistants, internships, and graduate student opportunities.</p>
-        <p>For application instructions, visit: 
-          <a href="https://lilab.usc.edu/employment/" target="_blank">Li Lab Employment Page</a>.
-        </p>
-      </div>
-
-      <!-- Example: Add more posts easily by copying the structure below -->
-      <!--
-      <button class="sub-accordion">Another Lab Name</button>
-      <div class="sub-panel">
-        <p>Opportunity description goes here...</p>
-        <p><a href="link-to-opportunity" target="_blank">Apply Here</a></p>
-      </div>
-      -->
-    </div>
-
-    <button class="accordion">Jobs / Internships</button>
-    <div class="panel">
-      <p>Open positions for research assistants, internships, and short-term projects will be listed here. Check back for new postings regularly!</p>
-    </div>
+<main class="container">
+  <div id="controls">
+    <input id="search" placeholder="Search opportunities by title, description or tag..." />
+    <select id="tagFilter" class="select"><option value="">All tags</option></select>
+    <select id="sort" class="select">
+      <option value="newest">Sort: Newest</option>
+      <option value="deadline">Sort: Deadline (soonest)</option>
+      <option value="title">Sort: Title A→Z</option>
+    </select>
   </div>
 
-  <script>
-    // Main accordion
-    const acc = document.querySelectorAll(".accordion");
-    acc.forEach(btn => {
-      btn.addEventListener("click", function() {
-        this.classList.toggle("active");
-        const panel = this.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
-      });
-    });
+  <section id="feed">
+    <div id="list" class="list"></div>
+    <button id="loadMore">Load more</button>
+  </section>
 
-    // Sub-accordion inside PhD Offers
-    const subAcc = document.querySelectorAll(".sub-accordion");
-    subAcc.forEach(btn => {
-      btn.addEventListener("click", function() {
-        this.classList.toggle("active");
-        const panel = this.nextElementSibling;
-        panel.style.display = panel.style.display === "block" ? "none" : "block";
-      });
-    });
-  </script>
+  <footer>
+    <h3 style="margin-top:0">Subscribe for Opportunity Alerts</h3>
+    <div>
+      <form id="subscribeForm" onsubmit="return false;">
+        <div class="subscribe-row">
+          <input id="subscriberName" class="email-input" placeholder="Full name (optional)" />
+          <input id="subscriberEmail" class="email-input" placeholder="Email address (required)" />
+          <button id="subscribeBtn" class="btn">Subscribe</button>
+        </div>
+      </form>
+    </div>
+    <p class="small">Follow us on <a href="https://www.linkedin.com/company/37071374/" target="_blank" class="link">LinkedIn</a></p>
+  </footer>
+</main>
+
+<script>
+const SUBSCRIBE_WEBHOOK_URL="";
+
+// --- Data ---
+const DB={
+  phd:[
+    {id:'p1',title:'PhD Position in Quantum Computing – UCF',
+     deadline:'Sept 30, 2025',datePublished:'Aug 30, 2025',region:'Global',
+     description:'A PhD position in quantum computing is available at the University of Central Florida starting Spring/Fall 2026. Candidates may contact Dr. Siyuan Niu at siyuan.niu@ucf.edu for more information.',
+     link:'#',tags:['PhD','Quantum Computing']},
+
+    {id:'p2',title:'Civil Engineering PhD – Colorado State University',
+     deadline:'Rolling',datePublished:'Aug 28, 2025',region:'USA',
+     description:'Colorado State University invites applications for a PhD student (Spring/Fall 2026, Spring preferred). Applicants need a Bachelor in Civil Engineering and a Master in Civil, Construction, or related fields. Candidates in the U.S. are prioritized. Apply with CV, transcripts, and test scores to smj.uddin@colostate.edu.',
+     link:'#',tags:['PhD','Civil Engineering']},
+
+    {id:'p3',title:'NASA-Funded PhD in Optics & Photonics',
+     deadline:'Nov 1, 2025',datePublished:'Aug 29, 2025',region:'Global',
+     description:'A NASA-supported PhD position is open for Spring 2026 in optics and photonics. Applicants should hold a Master’s in Electrical Engineering, Photonics, or a related field. Experimental background is strongly preferred. Apply here: https://lnkd.in/gvSBtCqg',
+     link:'https://lnkd.in/gvSBtCqg',tags:['PhD','Optics','Photonics','NASA']},
+
+    {id:'p4',title:'PhD Openings in Engineering/CS – Clemson University',
+     deadline:'Oct 15, 2025',datePublished:'Aug 27, 2025',region:'USA',
+     description:'Clemson University seeks PhD students in engineering, statistics, or computer science with strong coding skills (Spring/Fall 2026). Send CV and transcripts to fengye.recruit@gmail.com with subject “Ph.D. Application – Your Name”.',
+     link:'#',tags:['PhD','Engineering','Computer Science']},
+
+    {id:'p5',title:'PhD in Robotics, AI & Agriculture – Cornell University',
+     deadline:'Dec 15, 2025',datePublished:'Aug 30, 2025',region:'USA',
+     description:'Cornell University is recruiting PhD students for Fall 2026 to work on robotics, AI, and agricultural innovation. Contact lxiang@cornell.edu with subject “Your Name – PhD Application”.',
+     link:'#',tags:['PhD','AI','Robotics','Agriculture']}
+  ],
+
+  scholarships:[
+    {id:'s1',title:'TWAS-SN Bose Postdoctoral Fellowship Programme 2025/2026',
+     deadline:'Sept 22, 2025',datePublished:'Aug 26, 2025',region:'Africa',
+     description:'TWAS-SN Bose postdoctoral fellowships for early career researchers.',link:'#',tags:['Scholarship','Postdoc']},
+    {id:'s2',title:'Mastercard Foundation/ASU Innovation and Technology Scholarship 2026-2027',
+     deadline:'',datePublished:'Aug 12, 2025',region:'Global',
+     description:'Fully-funded scholarship for studies at ASU supported by Mastercard Foundation.',link:'#',tags:['Scholarship','Fully-funded']}
+  ],
+
+  internships:[
+    {id:'i1',title:'World Bank Treasury Summer Finance Internship 2026',
+     deadline:'',datePublished:'Aug 23, 2025',region:'Global',
+     description:'Summer internship opportunities at the World Bank Treasury.',link:'#',tags:['Internship','Finance']}
+  ],
+
+  collaboration:[
+    {id:'c1',title:'Open Research Collaboration on Climate Models',
+     deadline:'Oct 15, 2025',datePublished:'Aug 25, 2025',region:'Global',
+     description:'Researchers interested in climate modeling collaboration are invited to join.',link:'#',tags:['Collaboration','Research']}
+  ]
+};
+
+let currentCategory='phd';let pageSize=6;let pageIndex=0;let renderedIds=new Set();
+
+function buildTagOptions(){
+  const tagSet=new Set();
+  Object.values(DB).flat().forEach(it=>(it.tags||[]).forEach(t=>tagSet.add(t)));
+  const sel=document.getElementById('tagFilter');
+  tagSet.forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});
+}
+
+function escapeHtml(s){return(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+function renderList(reset=true){
+  if(reset){pageIndex=0;renderedIds=new Set();document.getElementById('list').innerHTML='';document.getElementById('loadMore').style.display='block';}
+  const search=document.getElementById('search').value.trim().toLowerCase();
+  const tag=document.getElementById('tagFilter').value;
+  const sort=document.getElementById('sort').value;
+  let items=(DB[currentCategory]||[]).slice();
+
+  if(search)items=items.filter(it=>(it.title+' '+it.description+' '+(it.tags||[]).join(' ')).toLowerCase().includes(search));
+  if(tag)items=items.filter(it=>(it.tags||[]).includes(tag));
+
+  if(sort==='newest')items.sort((a,b)=>new Date(b.datePublished||0)-new Date(a.datePublished||0));
+  else if(sort==='deadline')items.sort((a,b)=>(Date.parse(a.deadline)||1e15)-(Date.parse(b.deadline)||1e15));
+  else if(sort==='title')items.sort((a,b)=>a.title.localeCompare(b.title));
+
+  const slice=items.slice(pageIndex*pageSize,(pageIndex+1)*pageSize);
+  if(slice.length===0){document.getElementById('list').innerHTML='<div class="small">No items found.</div>';document.getElementById('loadMore').style.display='none';return;}
+
+  slice.forEach(it=>{
+    if(renderedIds.has(it.id))return;
+    renderedIds.add(it.id);
+
+    const uniqueLink=window.location.origin+window.location.pathname+"#"+currentCategory+"-"+it.id;
+    const encodedTitle=encodeURIComponent(it.title);
+    const encodedLink=encodeURIComponent(uniqueLink);
+
+    const el=document.createElement('article');el.className='card';
+    el.innerHTML=`<h3><a class="link" href="${uniqueLink}" target="_blank">${escapeHtml(it.title)}</a></h3>
+      <div class="meta">${it.datePublished||''}${it.deadline?' • Deadline: '+it.deadline:''}</div>
+      <div class="desc">${escapeHtml(it.description)}</div>
+      <div class="tags">Tags: ${(it.tags||[]).join(', ')}</div>
+      <div class="share">Share:
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=${encodedLink}&title=${encodedTitle}" target="_blank">LinkedIn</a>
+        <a href="https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedLink}" target="_blank">Twitter</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedLink}" target="_blank">Facebook</a>
+        <a href="mailto:?subject=${encodedTitle}&body=${encodedLink}" target="_blank">Email</a>
+      </div>`;
+    document.getElementById('list').appendChild(el);
+  });
+
+  pageIndex++;if(slice.length<pageSize)document.getElementById('loadMore').style.display='none';
+}
+
+function setActiveTabFromHash(){
+  const hash=(window.location.hash||'#phd').replace('#','');
+  const [cat,id]=hash.split('-');
+  currentCategory=DB[cat]?cat:'phd';
+  document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('active',a.dataset.tab===currentCategory));
+  renderList(true);
+  if(id){setTimeout(()=>{const target=document.querySelector(`#list article:nth-child(${[...DB[currentCategory]].findIndex(x=>x.id===id)+1})`);if(target)target.scrollIntoView({behavior:'smooth'});},300);}
+}
+
+document.getElementById('loadMore').addEventListener('click',()=>renderList(false));
+document.getElementById('search').addEventListener('input',()=>renderList(true));
+document.getElementById('tagFilter').addEventListener('change',()=>renderList(true));
+document.getElementById('sort').addEventListener('change',()=>renderList(true));
+window.addEventListener('hashchange',setActiveTabFromHash);
+
+buildTagOptions();setActiveTabFromHash();
+
+// --- subscription storage (local only for now) ---
+const SUB_KEY='teriwan_subs_v1';
+function loadSubs(){try{return JSON.parse(localStorage.getItem(SUB_KEY)||'[]')}catch(e){return[]}}
+function saveSubs(a){localStorage.setItem(SUB_KEY,JSON.stringify(a))}
+document.getElementById('subscribeBtn').addEventListener('click',async()=>{
+  const name=document.getElementById('subscriberName').value.trim();
+  const email=document.getElementById('subscriberEmail').value.trim();
+  if(!email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)){alert('Enter valid email.');return;}
+  const subs=loadSubs();const rec={id:'sub_'+Date.now(),name,email,date:new Date().toISOString()};subs.push(rec);saveSubs(subs);
+  alert('Thanks! You are subscribed.');document.getElementById('subscriberName').value='';document.getElementById('subscriberEmail').value='';
+  if(SUBSCRIBE_WEBHOOK_URL){try{await fetch(SUBSCRIBE_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(rec)})}catch(e){console.warn('Webhook failed',e)}}
+});
+</script>
 </body>
 </html>
-
